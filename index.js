@@ -18,7 +18,8 @@ function jstransformify(filename, opts) {
 
   [].concat(opts.v).concat(opts.visitors).filter(Boolean).forEach(function(v) {
     if (isString(v)) {
-      var basedir = path.dirname(filename);
+    //   var basedir = path.dirname(filename);
+      var basedir = path.join( __dirname, './node_modules/jstransform/visitors' );
       var cached = cache[basedir + ':' + v];
       if (!cached) {
         var required = require(resolve(v, {basedir: basedir})).visitorList;
